@@ -1,3 +1,6 @@
+import datetime
+
+
 class CastleKilmereMember:
     """
     Creates a member of the Castle Kilmere School of Magic
@@ -10,6 +13,11 @@ class CastleKilmereMember:
 
     def says(self, words):
         return f"{self._name} says {words}"
+    # property是只读属性
+    @property
+    def age(self):
+        now = datetime.datetime.now().year
+        return now - self.birthyear
 
     def __repr__(self):
         return f'{self.__class__.__name__}({self._name}, birthyear: {self.birthyear})'
@@ -104,4 +112,6 @@ if __name__ == "__main__":
         # flynn = Pupil.flynn()
         # cassidy = Pupil.cassidy()
         bromley = CastleKilmereMember(name='Bromley Huckabee', birthyear=1959, sex='male')
-        print(bromley)
+
+        print(bromley.age)
+        bromley.age = 112#can't set attribute
