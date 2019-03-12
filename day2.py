@@ -11,6 +11,9 @@ class CastleKilmereMember:
     def says(self, words):
         return f"{self._name} says {words}"
 
+    def __repr__(self):
+        return f'{self.__class__.__name__}({self._name}, birthyear: {self.birthyear})'
+
     @staticmethod
     def school_headmaster():
         return CastleKilmereMember('Redmond Dalodore', 1939, 'male')
@@ -87,16 +90,18 @@ class Ghost(CastleKilmereMember):
 
 
 if __name__ == "__main__":
+        # bromley = CastleKilmereMember(name='Bromley Huckabee', birthyear=1959, sex='male')
+        # cleon = Pupil(name='Cleon Bery', birthyear=2008, sex='male', house='House of Courage', start_year=2018)
+        # headmaster = cleon.school_headmaster()
+        #
+        # mirren = Professor.mirren()
+        # print(mirren.birthyear)
+        # print(mirren.blade().house)
+        # print(mirren.mirren().house)
+        # print(mirren.school_headmaster().birthyear)
+        # blade = Professor.blade()
+        # cleon = Pupil.cleon()
+        # flynn = Pupil.flynn()
+        # cassidy = Pupil.cassidy()
         bromley = CastleKilmereMember(name='Bromley Huckabee', birthyear=1959, sex='male')
-        cleon = Pupil(name='Cleon Bery', birthyear=2008, sex='male', house='House of Courage', start_year=2018)
-        headmaster = cleon.school_headmaster()
-
-        mirren = Professor.mirren()
-        print(mirren.birthyear)
-        print(mirren.blade().house)
-        print(mirren.mirren().house)
-        print(mirren.school_headmaster().birthyear)
-        blade = Professor.blade()
-        cleon = Pupil.cleon()
-        flynn = Pupil.flynn()
-        cassidy = Pupil.cassidy()
+        print(bromley)
