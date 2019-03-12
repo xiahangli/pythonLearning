@@ -6,10 +6,11 @@ class CastleKilmereMember:
     Creates a member of the Castle Kilmere School of Magic
     """
 
-    def __init__(self, name, birthyear, sex):
+    def __init__(self, name, birthyear, sex,height=0):
         self._name = name
         self.birthyear = birthyear
         self.sex = sex
+        self._height = height;#设置身高
 
     def says(self, words):
         return f"{self._name} says {words}"
@@ -19,7 +20,16 @@ class CastleKilmereMember:
         now = datetime.datetime.now().year
         return now - self.birthyear
 
-    age = property(age)
+    def _get_height(self):
+        return self._height
+
+    def _set_height(self,height:int):#设置height的数据类型
+         self._height = height
+
+    # 以下只设置了getter
+    # age = property(age)
+    #如果调用print(bromley.age)方法，那么会报错，因为get为None
+    age = property(None)
 
     def __repr__(self):
         return f'{self.__class__.__name__}({self._name}, birthyear: {self.birthyear})'
@@ -114,7 +124,10 @@ if __name__ == "__main__":
         # cleon = Pupil.cleon()
         # flynn = Pupil.flynn()
         # cassidy = Pupil.cassidy()
-        bromley = CastleKilmereMember(name='Bromley Huckabee', birthyear=1959, sex='male')
+        bromley = CastleKilmereMember(name='Bromley Huckabee', birthyear=1959, sex='male',height=123)
+        bromley._set_height(122222)#修改height的属性
+        # print(bromley.age)
+        # bromley.age = 112#can't set attribute
+        print(bromley._get_height())
 
-        print(bromley.age)
-        bromley.age = 112#can't set attribute
+
