@@ -14,10 +14,12 @@ class CastleKilmereMember:
     def says(self, words):
         return f"{self._name} says {words}"
     # property是只读属性
-    @property
+    # @property
     def age(self):
         now = datetime.datetime.now().year
         return now - self.birthyear
+
+    age = property(age)
 
     def __repr__(self):
         return f'{self.__class__.__name__}({self._name}, birthyear: {self.birthyear})'
@@ -39,6 +41,7 @@ class Pupil(CastleKilmereMember):
 
         if pet is not None:
             self.pet_name, self.pet_type = pet
+
 
         self._elms = {
                   'Broomstick Flying': False,
