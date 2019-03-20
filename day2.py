@@ -38,7 +38,7 @@ class CastleKilmereMember:
     def school_headmaster():
         return CastleKilmereMember('Redmond Dalodore', 1939, 'male')
 
-
+# 类继承
 class Pupil(CastleKilmereMember):
     """
     Create a Castle Kilmere Pupil
@@ -52,7 +52,7 @@ class Pupil(CastleKilmereMember):
         if pet is not None:
             self.pet_name, self.pet_type = pet
 
-
+        # 这是属性 elementare level of magic
         self._elms = {
                   'Broomstick Flying': False,
                   'Art': False,
@@ -65,6 +65,36 @@ class Pupil(CastleKilmereMember):
                   'History of Magic': False,
                   'Potions': False,
                   'Transfiguration': False}
+
+        @property
+        def elms(self):
+            return self._elms
+
+        @elms.setter
+        def elms(self,subject_and_grade):
+            # try:
+            #     subject , grade= subject_and_grade
+            # except ValueError:#如果有输入异常，则抛出异常
+            #     raise ValueError("Pass an iterable with two items: subject and grade")
+            #
+            # passed = self.passed(grade)
+            # if passed:
+            #     self._elms[subject] = True
+            # else:
+            #     print('The exam was not passed so no ELM was awarded!')
+            try:
+                subject, grade = subject_and_grade
+            except ValueError:
+                raise ValueError("Pass and iterable with two items: subject and grade")
+
+            passed = self.passed(grade)
+
+            if passed:
+                self._elms[subject] = True
+            else:
+                print('The exam was not passed so no ELM was awarded!')
+
+
 
     @classmethod
     def cleon(cls):
@@ -112,7 +142,7 @@ class Ghost(CastleKilmereMember):
 
 if __name__ == "__main__":
         # bromley = CastleKilmereMember(name='Bromley Huckabee', birthyear=1959, sex='male')
-        # cleon = Pupil(name='Cleon Bery', birthyear=2008, sex='male', house='House of Courage', start_year=2018)
+        cleon = Pupil(name='Cleon Bery', birthyear=2008, sex='male', house='House of Courage', start_year=2018)
         # headmaster = cleon.school_headmaster()
         #
         # mirren = Professor.mirren()
@@ -124,10 +154,11 @@ if __name__ == "__main__":
         # cleon = Pupil.cleon()
         # flynn = Pupil.flynn()
         # cassidy = Pupil.cassidy()
-        bromley = CastleKilmereMember(name='Bromley Huckabee', birthyear=1959, sex='male',height=123)
-        bromley._set_height(122222)#修改height的属性
+        # bromley = CastleKilmereMember(name='Bromley Huckabee', birthyear=1959, sex='male',height=123)
+        # bromley._set_height(122222)#修改height的属性
         # print(bromley.age)
         # bromley.age = 112#can't set attribute
-        print(bromley._get_height())
+        # print(bromley._get_height())
+        cleon.elms("2123123")
 
 
